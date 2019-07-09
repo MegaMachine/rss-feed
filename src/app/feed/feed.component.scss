@@ -1,0 +1,15 @@
+:host{
+  .feed-item{
+    width: 100%;
+    &-title{
+    }
+    &-user{
+      color:#777;
+    }
+    &-url{
+      color:rgb(5, 122, 168);
+      text-decoration: underline;
+    }
+  }
+}
+

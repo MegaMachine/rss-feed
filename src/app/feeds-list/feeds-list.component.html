@@ -1,0 +1,33 @@
+<section class="feeds-list">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <div class="form-add-feed form-group">
+          <form (ngSubmit)="onSignIn(f)" #f="ngForm" class="d-flex flex-column">
+            <label>
+              <span>User Name</span>
+              <input type="text" name="user" ngModel class="form-control"/>
+            </label>
+            <label>
+              <span>Title</span>
+              <input type="text" name="title" ngModel class="form-control"/>
+            </label>
+            <label>
+              <span>Feed URL</span>
+              <input type="text" name="url" ngModel class="form-control"/>
+            </label>
+            <button class="btn btn-dark" type="submit">ADD</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="feed-item-wrap"
+          *ngFor="let feed of feeds" >
+          <app-feed [feed]="feed"></app-feed>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

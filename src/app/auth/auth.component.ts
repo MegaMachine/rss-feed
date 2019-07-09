@@ -23,7 +23,7 @@ export class AuthComponent {
   onSubmit() {
     if (this.authUser.value.user === this.authCompare.user && this.authUser.value.password === this.authCompare.password) {
       console.log('+');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/feeds']);
     } else {
       console.log('-');
     }
