@@ -8,7 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent{
+export class AuthComponent {
   authUser = new FormGroup({
     user: new FormControl(''),
     password: new FormControl('')

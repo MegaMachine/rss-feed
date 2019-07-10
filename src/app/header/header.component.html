@@ -1,10 +1,15 @@
 <header>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-between align-items-center">
       <div class="col-md-3">
-        <a class="logo" [routerLink]="['/home']">
+        <a class="logo" [routerLink]="['/feeds']">
           <img src="../../assets/logo.png" alt="logo">
         </a>
+      </div>
+      <div class="col-md-2">
+        <div class="btn btn-dark"
+          *ngIf="authStatus"
+          (click)="onLogout()">Logout</div>
       </div>
     </div>
   </div>

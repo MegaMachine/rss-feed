@@ -1,3 +1,4 @@
+import { FeedsService } from './../../shares/feeds.service';
 import { Feed } from '../../shares/feed.interface';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,9 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FeedItemComponent implements OnInit {
   @Input() feed: Feed;
-  constructor() { }
+  constructor(
+    private feedsService: FeedsService
+  ) { }
 
   ngOnInit() {
   }
-
+  deleteItem(deleteData: {name: string, title: string}) {
+    this.feedsService.deleteFeed(deleteData);
+  }
 }

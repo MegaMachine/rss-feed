@@ -1,3 +1,5 @@
+import { Observable, Subject } from 'rxjs';
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
+  authStatus: boolean;
+  constructor(
+    private authService: AuthService
+  ) { }
   ngOnInit() {
+    this.authService.checkAuth
+      .subscribe(
+        (res) => {
+          this.authStatus = res;
+        }
+      );
   }
-
+  onLogout() {
+    this.authService.onLogout();
+  }
 }

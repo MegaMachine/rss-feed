@@ -23,7 +23,9 @@ export class FeedsListComponent implements OnInit {
         this.feeds = data;
       });
   }
-  onSubmit(form: NgForm) {
 
+  onSubmit(form: NgForm) {
+    const feed: Feed = form.form.value;
+    this.feedsService.addFeed(feed);
   }
 }

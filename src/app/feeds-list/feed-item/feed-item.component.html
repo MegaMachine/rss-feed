@@ -1,5 +1,11 @@
-<div class="feed-item">
-  <h2 class="feed-item-title">{{feed.title}}</h2>
-  <p class="feed-item-user">{{feed.user}}</p>
-  <p class="feed-item-url">{{feed.url}}</p>
+<div class="feed-item d-flex justify-content-between">
+  <div class="feed-item-left">
+    <h2 class="feed-item-title">{{feed.title}}</h2>
+    <p class="feed-item-user">{{feed.user}}</p>
+    <p class="feed-item-url">{{feed.url}}</p>
+  </div>
+  <div class="feed-item-right">
+    <span class="btn btn-danger"
+      (click)="deleteItem({user:feed.user, title:feed.title})">X</span>
+  </div>
 </div>
