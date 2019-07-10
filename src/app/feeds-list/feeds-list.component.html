@@ -3,29 +3,34 @@
     <div class="row justify-content-center">
       <div class="col-md-3">
         <div class="form-add-feed form-group">
-          <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="d-flex flex-column">
+          <form [formGroup]="feedForm" class="d-flex flex-column">
             <label>
               <span>User Name</span>
-              <input type="text" name="user" ngModel class="form-control"/>
+              <input type="text" name="user" [formControlName]="'user'" class="form-control"/>
             </label>
             <label>
               <span>Title</span>
-              <input type="text" name="title" ngModel class="form-control"/>
+              <input type="text" name="title" [formControlName]="'title'" class="form-control"/>
             </label>
             <label>
               <span>Feed URL</span>
-              <input type="text" name="url" ngModel class="form-control"/>
+              <input type="text" name="url" [formControlName]="'url'" class="form-control"/>
             </label>
-            <button class="btn btn-dark" type="submit">ADD</button>
           </form>
+          <div class="buttons">
+              <button class="btn btn-dark" (click)="onAdd()" type="submit">ADD</button>
+              <button *ngIf="saveCheck" (click)="onSave()" class="btn btn-success">SAVE FEEDS</button>
+            </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="feed-item-wrap"
-          *ngFor="let feed of feeds" >
-          <app-feed-item [feed]="feed"></app-feed-item>
+          *ngFor="let feed of feeds; let i = index;" >
+          <div>
+            <app-feed-item  (deleteFeed)="onDelete($event)" [index]="i" [feed]="feed"></app-feed-item>
+          </div>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { User } from '../shares/user.interface';
 @Injectable()
 export class AuthService {
   checkAuth = new BehaviorSubject<boolean>(false);
+  userName = '';
   constructor(
     private router: Router,
     private httpClient: HttpClient,
@@ -25,6 +26,7 @@ export class AuthService {
     return this.httpClient.post<User>('http://localhost:5000/login', user, { observe: 'response'})
       .subscribe((data: any) => {
         this.checkAuth.next(data.body);
+        this.userName = user.user;
         this.router.navigate(['/feeds']);
       });
   }

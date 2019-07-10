@@ -1,3 +1,4 @@
+import { RssService } from './feed/rss.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth/auth.service';
 import { FeedsService } from './shares/feeds.service';
@@ -12,13 +13,17 @@ import { AuthComponent } from './auth/auth.component';
 import { FeedsListComponent } from './feeds-list/feeds-list.component';
 import { FeedItemComponent } from './feeds-list/feed-item/feed-item.component';
 import { HeaderComponent } from './header/header.component';
+import { FeedComponent } from './feed/feed.component';
+import { RssItemComponent } from './feed/rss-item/rss-item.component';
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     FeedsListComponent,
     FeedItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    FeedComponent,
+    RssItemComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [FeedsService, AuthService, AuthGuard],
+  providers: [FeedsService, AuthService, AuthGuard, RssService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

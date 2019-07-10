@@ -1,6 +1,6 @@
 import { FeedsService } from './../../shares/feeds.service';
 import { Feed } from '../../shares/feed.interface';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-feed-item',
@@ -8,14 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./feed-item.component.scss']
 })
 export class FeedItemComponent implements OnInit {
+  @Input() index: number;
   @Input() feed: Feed;
+  @Output() deleteFeed = new EventEmitter();
   constructor(
     private feedsService: FeedsService
   ) { }
 
   ngOnInit() {
   }
-  deleteItem(deleteData: {name: string, title: string}) {
-    this.feedsService.deleteFeed(deleteData);
+  deleteItem(deleteFeed: any) {
+    this.deleteFeed.emit(deleteFeed);
   }
 }

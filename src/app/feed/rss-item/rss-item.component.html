@@ -1,0 +1,10 @@
+<a [href]="feed.link" class="rss-item" target="_blank">
+  <div class="rss-item-img">
+    <img [src]="feed.enclosure.link" alt="">
+  </div>
+  <div class="rss-item-text">
+    <h3 class="rss-item-title">{{feed.title}}</h3>
+    <p class="rss-item-date-author">{{feed.pubDate}} | {{feed.author || 'Unknown'}}</p>
+    <p class="rss-item-description">{{feed.description}}</p>
+  </div>
+</a>

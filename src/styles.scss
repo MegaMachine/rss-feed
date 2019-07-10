@@ -13,3 +13,14 @@ section{
     display: none;
   }
 }
+.btn{
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+a{
+  &:hover,&:active,&:visited,&:focus{
+    text-decoration: none;
+  }
+}
