@@ -1,3 +1,6 @@
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth/auth.service';
+import { FeedsService } from './shares/feeds.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -7,14 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { FeedsListComponent } from './feeds-list/feeds-list.component';
-import { FeedComponent } from './feed/feed.component';
+import { FeedItemComponent } from './feeds-list/feed-item/feed-item.component';
 import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     FeedsListComponent,
-    FeedComponent,
+    FeedItemComponent,
     HeaderComponent
   ],
   imports: [
@@ -24,7 +27,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [FeedsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

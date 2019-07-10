@@ -1,31 +1,28 @@
+import { User } from './../shares/user.interface';
+import { AuthService } from './auth.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent {
+export class AuthComponent{
   authUser = new FormGroup({
     user: new FormControl(''),
     password: new FormControl('')
   });
-  authCompare = {
-    user: 'test@test.com',
-    password: '12345678'
-  }
 
   constructor(
-    private router: Router
+    private authService: AuthService
   ) {}
+
   onSubmit() {
-    if (this.authUser.value.user === this.authCompare.user && this.authUser.value.password === this.authCompare.password) {
-      console.log('+');
-      this.router.navigate(['/feeds']);
-    } else {
-      console.log('-');
-    }
+    const user: User = {
+      user: this.authUser.value.user,
+      password: this.authUser.value.password,
+    };
+    this.authService.onLogin(user);
   }
 }
