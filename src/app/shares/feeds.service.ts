@@ -13,19 +13,20 @@ export class FeedsService {
   ) {}
 
   getFeeds() {
-    this.httpClient.get('http://localhost:5000/feeds')
+    return this.httpClient.get('http://localhost:5000/feeds')
       .subscribe((res: Feed[]) => {
         this.feeds.next(res);
       });
   }
   deleteFeed(deleteFeed) {
-    this.httpClient.delete('http://localhost:5000/feeds', deleteFeed)
+    console.log(deleteFeed);
+    return this.httpClient.delete('http://localhost:5000/feeds', deleteFeed)
       .subscribe((res: any) => {
         this.feeds.next(res);
       });
   }
   addFeed(feed: Feed) {
-    this.httpClient.put('http://localhost:5000/feeds', feed)
+    return this.httpClient.put('http://localhost:5000/feeds', feed)
       .subscribe((res: Feed[]) => {
         this.feeds.next(res);
       });
