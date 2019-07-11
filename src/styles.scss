@@ -5,6 +5,9 @@
   font-size: 16px;
   color:#333;
 }
+html{
+  font-size: 16px;
+}
 section{
   padding: 80px 0px;
 }
@@ -27,4 +30,7 @@ a{
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border-color: #dc3545 !important;
+}
+input{
+  font-size: 14px;
 }

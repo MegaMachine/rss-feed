@@ -1,7 +1,7 @@
 import { RssService } from './rss.service';
 import { HttpClient } from '@angular/common/http';
 import { FeedsService } from './../shares/feeds.service';
-import { Feed } from './../shares/feed.interface';
+import { Feed } from './../shares/feed.model';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

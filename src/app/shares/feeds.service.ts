@@ -1,4 +1,4 @@
-import { Feed } from './feed.interface';
+import { Feed } from './feed.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -8,6 +8,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class FeedsService {
   bsFeeds = new BehaviorSubject<Feed[]>([]);
   feeds: Feed[];
+  saveCheck = new BehaviorSubject<boolean>(false);
   constructor(
     private httpClient: HttpClient
   ) {

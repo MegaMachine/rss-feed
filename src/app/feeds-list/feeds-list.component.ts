@@ -1,10 +1,9 @@
 import { AuthService } from './../auth/auth.service';
 import { FeedsService } from './../shares/feeds.service';
-import { Feed } from './../shares/feed.interface';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Feed } from './../shares/feed.model';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-feeds-list',
@@ -13,8 +12,8 @@ import { Subscription } from 'rxjs';
 })
 export class FeedsListComponent implements OnInit {
   feeds: Feed[];
-  saveCheck = false;
   userName = '';
+  saveCheck = false;
   feedForm = new FormGroup({
     user: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
@@ -27,25 +26,41 @@ export class FeedsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.feedsService.getFeeds();
+    // this.feedsService.getFeeds();
     this.feedsService.bsFeeds
       .subscribe((data: Feed[]) => {
         this.feeds = data;
+      });
+    this.feedsService.saveCheck
+      .subscribe((data: boolean) => {
+        this.saveCheck = data;
       });
     this.feedForm.patchValue({user: this.authService.userName});
   }
   onSave() {
     this.feedsService.putFeeds();
-    this.saveCheck = false;
+    this.feedsService.saveCheck.next(false);
   }
   onAdd() {
-    this.feedsService.addFeed(this.feedForm.value);
-    this.saveCheck = true;
+    const feed = new Feed(
+      this.feedForm.value.user,
+      this.feedForm.value.title,
+      this.feedForm.value.url
+    );
+    this.feedsService.addFeed(feed);
+    this.feedsService.saveCheck.next(true);
     this.feedForm.reset();
     this.feedForm.patchValue({user: this.authService.userName});
   }
   onDelete(deleteFeed: Feed) {
     this.feedsService.deleteFeed(deleteFeed);
-    this.saveCheck = true;
+    this.feedsService.saveCheck.next(true);
+  }
+  onFetch() {
+    this.feedsService.getFeeds();
+    this.feedsService.bsFeeds
+    .subscribe((data: Feed[]) => {
+      this.feeds = data;
+    });
   }
 }

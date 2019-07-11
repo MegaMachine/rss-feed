@@ -1,5 +1,5 @@
 import { FeedsService } from './../../shares/feeds.service';
-import { Feed } from '../../shares/feed.interface';
+import { Feed } from '../../shares/feed.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

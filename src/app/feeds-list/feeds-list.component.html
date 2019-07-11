@@ -26,8 +26,9 @@
                   'btn-success': feedForm.valid,
                   'btn-dark': !feedForm.valid
                 }">ADD</button>
-              <button *ngIf="saveCheck" (click)="onSave()" class="btn btn-success">SAVE FEEDS</button>
-            </div>
+              <button (click)="onFetch()" class="btn btn-primary">FETCH FEEDS</button>
+              <button [style.visibility]="saveCheck ? 'visible' : 'hidden'" (click)="onSave()" class="btn btn-success">SAVE FEEDS</button>
+          </div>
         </div>
       </div>
     </div>
@@ -39,6 +40,7 @@
             <app-feed-item  (deleteFeed)="onDelete($event)" [index]="i" [feed]="feed"></app-feed-item>
           </div>
         </div>
+        <h2 *ngIf="!feeds.length">You need to fetch or add feeds</h2>
       </div>
     </div>
   </div>
