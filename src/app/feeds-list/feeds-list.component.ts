@@ -3,6 +3,7 @@ import { FeedsService } from './../shares/feeds.service';
 import { Feed } from './../shares/feed.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidateUrl } from '../shares/url.validator';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class FeedsListComponent implements OnInit {
   feedForm = new FormGroup({
     user: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
-    url: new FormControl('', Validators.required),
+    url: new FormControl('', [ Validators.required, ValidateUrl]),
   });
 
   constructor(
@@ -62,5 +63,9 @@ export class FeedsListComponent implements OnInit {
     .subscribe((data: Feed[]) => {
       this.feeds = data;
     });
+    this.feedsService.saveCheck.next(false);
+  }
+  checkUrl() {
+    return (this.feedForm.get('url').errors != null && this.feedForm.get('url').dirty);
   }
 }

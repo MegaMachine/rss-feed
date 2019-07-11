@@ -32,7 +32,6 @@ export class FeedComponent implements OnInit {
       .subscribe(
         (feeds) => {
           this.feeds = feeds.items;
-          console.log(feeds);
         }
       );
   }

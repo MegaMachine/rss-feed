@@ -40,7 +40,6 @@ export class FeedsService {
     this.bsFeeds.next(this.feeds);
   }
   addFeed(feed: Feed) {
-    console.log(feed);
     this.feeds.push(feed);
     this.bsFeeds.next(this.feeds);
   }

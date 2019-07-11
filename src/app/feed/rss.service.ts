@@ -22,6 +22,7 @@ export class RssService {
 
   private extractFeeds(res: Response): any {
     let feed = res;
+    console.log(feed);
     return feed || { };
   }
 

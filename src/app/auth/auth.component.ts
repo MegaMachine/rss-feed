@@ -31,7 +31,6 @@ export class AuthComponent {
         this.authService.userName = user.user;
         this.router.navigate(['/feeds']);
         this.checkAuth = data.body;
-        console.log(this.checkAuth);
       });
   }
 }

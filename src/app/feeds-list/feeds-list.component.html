@@ -15,16 +15,17 @@
             <label>
               <span>Feed URL</span>
               <input type="text" name="url" [formControlName]="'url'" class="form-control"/>
+              <span class="url-error" [style.visibility]=" checkUrl() ? 'visible' : 'hidden'">This is not a link to FEEDS</span>
             </label>
           </form>
           <div class="buttons">
               <button class="btn btn-dark"
                 (click)="onAdd()"
                 type="submit"
-                [disabled]="!feedForm.valid"
+                [disabled]="!feedForm.valid || feedForm.get('url').errors != null"
                 [ngClass]="{
-                  'btn-success': feedForm.valid,
-                  'btn-dark': !feedForm.valid
+                  'btn-success': feedForm.valid || !feedForm.get('url').errors != null,
+                  'btn-dark': !feedForm.valid || feedForm.get('url').errors != null
                 }">ADD</button>
               <button (click)="onFetch()" class="btn btn-primary">FETCH FEEDS</button>
               <button [style.visibility]="saveCheck ? 'visible' : 'hidden'" (click)="onSave()" class="btn btn-success">SAVE FEEDS</button>

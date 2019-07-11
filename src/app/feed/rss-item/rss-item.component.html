@@ -1,7 +1,7 @@
 <a [href]="feed.link" class="rss-item" target="_blank">
   <div class="rss-item-img"
     *ngIf="feed.enclosure.hasOwnProperty('link') || feed.hasOwnProperty('thumbnail')">
-    <img [src]="feed.enclosure.link || feed.thumbnail" alt="">
+    <img [src]="feed.thumbnail || feed.enclosure.link" alt="">
   </div>
   <div class="rss-item-text"
     [ngClass]="{'full-width': !feed.enclosure.hasOwnProperty('link')}">
