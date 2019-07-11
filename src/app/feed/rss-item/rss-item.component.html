@@ -1,11 +1,11 @@
 <a [href]="feed.link" class="rss-item" target="_blank">
   <div class="rss-item-img"
-    *ngIf="feed.enclosure.link || feed.thumbnail">
+    *ngIf="feed.enclosure.hasOwnProperty('link') || feed.hasOwnProperty('thumbnail')">
     <img [src]="feed.enclosure.link || feed.thumbnail" alt="">
   </div>
   <div class="rss-item-text"
     [ngClass]="{'full-width': !feed.enclosure.hasOwnProperty('link')}">
-    <h3 class="rss-item-title">{{feed.title}} {{feed.enclosure.link}}</h3>
+    <h3 class="rss-item-title">{{feed.title}}</h3>
     <p class="rss-item-date-author">{{feed.pubDate}} | {{feed.author || 'Unknown'}}</p>
     <p class="rss-item-description" [innerHTML]="feed.description"></p>
   </div>

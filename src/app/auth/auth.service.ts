@@ -23,12 +23,7 @@ export class AuthService {
     );
   }
   onLogin(user: User) {
-    return this.httpClient.post<User>('http://localhost:5000/login', user, { observe: 'response'})
-      .subscribe((data: any) => {
-        this.checkAuth.next(data.body);
-        this.userName = user.user;
-        this.router.navigate(['/feeds']);
-      });
+    return this.httpClient.post<User>('http://localhost:5000/login', user, { observe: 'response'});
   }
   onLogout() {
     this.checkAuth.next(false);

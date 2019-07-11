@@ -17,7 +17,7 @@
       }
     }
     &-text{
-      flex-basis: 67%;
+      width: 67%;
       &.full-width{
         width: 100%;
       }
@@ -39,6 +39,7 @@
       width: 100%;
       text-overflow: ellipsis;
       overflow: hidden;
+      word-wrap: break-word;
       img{
         display: none !important;
       }

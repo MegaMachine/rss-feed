@@ -41,6 +41,8 @@ export class FeedsListComponent implements OnInit {
   onAdd() {
     this.feedsService.addFeed(this.feedForm.value);
     this.saveCheck = true;
+    this.feedForm.reset();
+    this.feedForm.patchValue({user: this.authService.userName});
   }
   onDelete(deleteFeed: Feed) {
     this.feedsService.deleteFeed(deleteFeed);

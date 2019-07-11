@@ -18,6 +18,8 @@
               <input class="form-control" [formControlName]="'password'" type="password" placeholder="Password">
             </label>
           </div>
+          <p class="auth-info" [ngClass]="{'invalid': !checkAuth}">The username or password you have entered is invalid.
+          </p>
           <button class="btn btn-primary" type="submit">Login</button>
         </form>
       </div>
