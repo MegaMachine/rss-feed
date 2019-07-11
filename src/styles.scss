@@ -24,3 +24,7 @@ a{
     text-decoration: none;
   }
 }
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #dc3545 !important;
+}

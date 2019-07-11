@@ -1,7 +1,7 @@
 <section class="feeds-list">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-3">
+      <div class="col-md-6">
         <div class="form-add-feed form-group">
           <form [formGroup]="feedForm" class="d-flex flex-column">
             <label>
@@ -18,7 +18,14 @@
             </label>
           </form>
           <div class="buttons">
-              <button class="btn btn-dark" (click)="onAdd()" type="submit">ADD</button>
+              <button class="btn btn-dark"
+                (click)="onAdd()"
+                type="submit"
+                [disabled]="!feedForm.valid"
+                [ngClass]="{
+                  'btn-success': feedForm.valid,
+                  'btn-dark': !feedForm.valid
+                }">ADD</button>
               <button *ngIf="saveCheck" (click)="onSave()" class="btn btn-success">SAVE FEEDS</button>
             </div>
         </div>
